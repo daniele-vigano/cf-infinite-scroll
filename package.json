@@ -8,14 +8,11 @@
   "module": "./dist/index.module.js",
   "unpkg": "./dist/index.umd.js",
   "exports": {
-    "types": "./dist/index.d.ts",
     "require": "./dist/index.cjs",
-    "default": "./dist/index.modern.js"
+    "default": "./dist/index.js"
   },
   "scripts": {
-    "build": "microbundle --no-compress",
-    "dev": "microbundle watch",
-    "prepare": "npm run build"
+    "build": "microbundle"
   },
   "keywords": [
     "infinite-scroll",
