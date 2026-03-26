@@ -1,0 +1,31 @@
+{
+  "name": "cf-infinite-scroll",
+  "version": "1.0.0",
+  "description": "A lightweight infinite scroll marquee for the browser",
+  "type": "module",
+  "source": "src/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.module.js",
+  "unpkg": "./dist/index.umd.js",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
+  },
+  "scripts": {
+    "build": "microbundle --no-compress",
+    "dev": "microbundle watch",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "infinite-scroll",
+    "marquee",
+    "javascript",
+    "browser"
+  ],
+  "author": "Daniele Viganò",
+  "license": "MIT",
+  "devDependencies": {
+    "microbundle": "^0.15.1"
+  }
+}
