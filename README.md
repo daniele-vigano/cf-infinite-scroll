@@ -34,6 +34,9 @@ const scroller = new CFInfiniteScroll('#my-scroller', {
 });
 
 scroller.init();
+
+// Per fermare e ripulire:
+// scroller.destroy();
 ```
 
 ## API
