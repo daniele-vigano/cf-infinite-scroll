@@ -1,6 +1,6 @@
 {
   "name": "cf-infinite-scroll",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "files": [
     "dist"
   ],
@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "microbundle",
-    "dev": "microbundle watch --no-compress --format modern"
+    "dev": "microbundle watch --no-compress --format modern",
+    "deploy": "gh-pages -d example"
   },
   "keywords": [
     "infinite scroll",
@@ -28,6 +29,7 @@
   "author": "Daniele Viganò",
   "license": "MIT",
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "microbundle": "^0.15.1"
   }
 }
