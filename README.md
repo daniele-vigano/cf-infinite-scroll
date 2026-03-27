@@ -1,6 +1,6 @@
 # CFInfiniteScroll 🚀
 
-A lightweight (zero dependencies) library to create smooth infinite scrolling (marquee) effects in the browser.
+A vanilla lightweight (zero dependencies) library to create smooth infinite scrolling (marquee) effects in the browser.
 
 ## Installation
 

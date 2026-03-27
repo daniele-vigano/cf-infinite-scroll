@@ -4,7 +4,7 @@
   "files": [
     "dist"
   ],
-  "description": "A lightweight infinite scroll marquee for the browser",
+  "description": "A vanilla lightweight infinite scroll marquee for the browser",
   "type": "module",
   "source": "src/index.js",
   "main": "./dist/index.cjs",
@@ -21,6 +21,7 @@
     "infinite-scroll",
     "marquee",
     "javascript",
+    "vanilla",
     "browser"
   ],
   "author": "Daniele Viganò",
