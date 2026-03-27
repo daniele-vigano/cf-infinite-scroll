@@ -30,7 +30,9 @@ The required CSS is injected automatically.
 import CFInfiniteScroll from 'cf-infinite-scroll';
 
 const scroller = new CFInfiniteScroll('#my-scroller', {
-    speed: 100 // pixels per second
+    speed: 100, // pixels per second
+    pauseOnMouseEnter: true, // pauses the animation when the mouse hovers over it
+    injectStyles: true // automatically injects the minimal required CSS styles
 });
 
 scroller.init();
@@ -41,9 +43,12 @@ scroller.init();
 
 ## API
 
-| Option  | Type     | Default | Description                      |
-|---------|----------|---------|----------------------------------|
-| `speed` | `number` | `100`   | Scroll speed in px/s.            |
+| Option              | Type      | Default | Description                                                                                  |
+|---------------------|-----------|---------|----------------------------------------------------------------------------------------------|
+| `speed`             | `number`  | `100`   | Scroll speed in px/s.                                                                        |
+| `pauseOnMouseEnter` | `boolean` | `true`  | Pauses the animation when the mouse hovers over it.                                          |
+| `injectStyles`      | `boolean` | `true`  | Automatically injects the minimal required CSS styles so the animation works out of the box. |
+
 
 ### Methods
 

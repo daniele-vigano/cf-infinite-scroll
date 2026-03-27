@@ -5,21 +5,25 @@ export default class CFInfiniteScroll {
      * @param {Object} options - Configuration options.
      * @param {number} [options.speed=100] - Scroll speed in pixels per second.
      * @param {boolean} [options.pauseOnMouseEnter=true] - Pauses animation when the mouse enters the track.
+     * @param {boolean} [options.injectStyles=true] - Automatically injects the minimal required CSS styles so the animation works out of the box.
      */
     constructor(container, {
         speed = 100,
-        pauseOnMouseEnter = true
+        pauseOnMouseEnter = true,
+        injectStyles = true
     }) {
         this.container = typeof container === 'string' ? document.querySelector(container) : container;
         this.track = this.container.querySelector('.track');
         this.speed = speed;
         this.pauseOnMouseEnter = pauseOnMouseEnter;
+        this.injectStyles = injectStyles;
         this._originalItems = [];
         this._scrollWidth = 0;
         this._gap = 0;
         this._duration = 0;
 
         this._injectStyles();
+        console.log("Versione 1.1");
     }
 
     /**
@@ -43,8 +47,13 @@ export default class CFInfiniteScroll {
             }
             /* Ensures the track is a flex container */
             [data-infinite-scroll-track] {
-                display: flex;
-                will-change: transform;
+                overflow: hidden;
+                
+                .track{
+                    display: flex;
+                    width: max-content;
+                    will-change: transform;
+                }
             }
         `;
         document.head.appendChild(style);
@@ -56,7 +65,9 @@ export default class CFInfiniteScroll {
         }
 
         // Add an attribute to apply base styles when needed
-        this.track.setAttribute('data-infinite-scroll-track', '');
+        if ( this.injectStyles ) {
+            this.container.setAttribute('data-infinite-scroll-track', '');
+        }
 
         this._originalItems = Array.from(this.track.children);
         this._gap = parseInt(window.getComputedStyle(this.track).gap, 10) || 0;
