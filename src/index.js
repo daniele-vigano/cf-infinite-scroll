@@ -1,14 +1,19 @@
 export default class CFInfiniteScroll {
     /**
-     * Crea un nuovo InfiniteScroller.
-     * @param {HTMLElement|string} container - L'elemento contenitore o un selettore CSS.
-     * @param {Object} options - Opzioni di configurazione.
-     * @param {number} [options.speed=100] - Velocità dello scorrimento in pixel al secondo.
+     * Creates a new InfiniteScroll.
+     * @param {HTMLElement|string} container - The container element or a CSS selector.
+     * @param {Object} options - Configuration options.
+     * @param {number} [options.speed=100] - Scroll speed in pixels per second.
+     * @param {boolean} [options.pauseOnMouseEnter=true] - Pauses animation when the mouse enters the track.
      */
-    constructor(container, {speed = 100}) {
+    constructor(container, {
+        speed = 100,
+        pauseOnMouseEnter = true
+    }) {
         this.container = typeof container === 'string' ? document.querySelector(container) : container;
         this.track = this.container.querySelector('.track');
         this.speed = speed;
+        this.pauseOnMouseEnter = pauseOnMouseEnter;
         this._originalItems = [];
         this._scrollWidth = 0;
         this._gap = 0;
@@ -18,13 +23,13 @@ export default class CFInfiniteScroll {
     }
 
     /**
-     * Inietta i keyframes necessari nell'head del documento
+     * Injects the required keyframes into the document head
      * @private
      */
     _injectStyles() {
         const styleId = 'cf-infinite-scroll-styles';
 
-        // Evitiamo di iniettare lo stile più volte se ci sono più istanze nella pagina
+        // Avoid injecting the style multiple times when there are multiple instances on the page
         if ( document.getElementById(styleId) ) {
             return;
         }
@@ -36,7 +41,7 @@ export default class CFInfiniteScroll {
                 from { transform: translateX(0); }
                 to { transform: translateX(var(--scroll-distance)); }
             }
-            /* Opzionale: assicura che il track sia un flex container */
+            /* Ensures the track is a flex container */
             [data-infinite-scroll-track] {
                 display: flex;
                 will-change: transform;
@@ -50,7 +55,7 @@ export default class CFInfiniteScroll {
             throw new Error('Container o track non trovati');
         }
 
-        // Aggiungiamo un attributo per applicare gli stili base se necessario
+        // Add an attribute to apply base styles when needed
         this.track.setAttribute('data-infinite-scroll-track', '');
 
         this._originalItems = Array.from(this.track.children);
@@ -66,8 +71,8 @@ export default class CFInfiniteScroll {
             currentTrackWidth += this._scrollWidth;
         }
 
-        // Se il numero totale di elementi è dispari, aggiungi un altro ciclo di duplicazione per evitare brutte sorprese
-        // coi CSS, esempio colori alternati che sfalsano
+        // If the total number of elements is odd, add another duplication cycle to avoid
+        // unexpected CSS issues, for example alternating colors getting out of sync
         if ( this.track.children.length % 2 !== 0 ) {
             this._originalItems.forEach(item => {
                 const clone = item.cloneNode(true);
@@ -76,24 +81,26 @@ export default class CFInfiniteScroll {
             currentTrackWidth += this._scrollWidth;
         }
 
-        // Calcola la durata in base alla velocità (pixel/sec)
-        // Se la velocità è 0 o negativa, fallback a 1 per evitare divisione per zero
+        // Calculate duration based on speed (pixels/sec)
+        // If speed is 0 or negative, fallback to 1 to avoid division by zero
         this._duration = this.speed > 0 ? this._scrollWidth / this.speed : 1;
         this.track.style.setProperty('--scroll-distance', `-${this._scrollWidth}px`);
         this.track.style.animation = `cf-infinite-scroll-animation ${this._duration}s linear infinite`;
 
-        // Pausa animazione su hover
-        this.track.addEventListener('mouseenter', () => {
-            this.track.style.animationPlayState = 'paused'; // Niente !important, niente ;
-        });
+        // Pause animation on hover
+        if ( this.pauseOnMouseEnter ) {
+            this.track.addEventListener('mouseenter', () => {
+                this.track.style.animationPlayState = 'paused';
+            });
 
-        this.track.addEventListener('mouseleave', () => {
-            this.track.style.animationPlayState = 'running'; // Meglio esplicitare 'running'
-        });
+            this.track.addEventListener('mouseleave', () => {
+                this.track.style.animationPlayState = 'running';
+            });
+        }
     }
 
     destroy() {
-        // Rimuove tutti i cloni lasciando solo gli originali
+        // Remove all clones and keep only the original items
         while (this.track.children.length > this._originalItems.length) {
             this.track.removeChild(this.track.lastChild);
         }
