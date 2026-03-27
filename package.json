@@ -1,10 +1,10 @@
 {
   "name": "cf-infinite-scroll",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "files": [
     "dist"
   ],
-  "description": "A vanilla lightweight infinite scroll marquee for the browser",
+  "description": "A vanilla JS lightweight (zero dependencies) library to create smooth infinite scrolling (marquee) effects in the browser.",
   "homepage": "https://daniele-vigano.github.io/cf-infinite-scroll/",
   "type": "module",
   "source": "src/index.js",
