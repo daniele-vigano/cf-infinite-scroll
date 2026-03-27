@@ -23,7 +23,6 @@ export default class CFInfiniteScroll {
         this._duration = 0;
 
         this._injectStyles();
-        console.log("Versione 1.1");
     }
 
     /**
