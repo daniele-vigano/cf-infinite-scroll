@@ -9,15 +9,24 @@
 </div>
 
 <script type="module">
-    import InfiniteScroll from '../dist/index.js';
+    // In development (local) use the local file, in production (GitHub) use UNPKG
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-    const marquee = new InfiniteScroll('#scroll-container', {
-        speed: 50,
-        pauseOnMouseEnter: true,
-        injectStyles: true
+    const modulePath = isLocal
+        ? '../dist/index.js'
+        : 'https://unpkg.com';
+
+    import(modulePath).then(module => {
+        const InfiniteScroll = module.default;
+
+        const marquee = new InfiniteScroll('#scroll-container', {
+            speed: 50,
+            pauseOnMouseEnter: true,
+            injectStyles: true
+        });
+
+        marquee.init();
     });
-
-    marquee.init();
 </script>
 
 <!-- Custom styles for demo: use your own styles -->
