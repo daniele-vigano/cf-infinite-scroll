@@ -2,6 +2,9 @@
 
 A vanilla lightweight (zero dependencies) library to create smooth infinite scrolling (marquee) effects in the browser.
 
+## Demo
+You can see the library in action here: [daniele-vigano.github.io/cf-infinite-scroll](https://daniele-vigano.github.io/cf-infinite-scroll/)
+
 ## Installation
 
 ```bash
@@ -24,7 +27,6 @@ The structure requires a container and an inner element with the class `.track`.
 ```
 
 ### JavaScript
-The required CSS is injected automatically.
 
 ```javascript
 import CFInfiniteScroll from 'cf-infinite-scroll';
@@ -43,11 +45,11 @@ scroller.init();
 
 ## API
 
-| Option              | Type      | Default | Description                                                                                  |
-|---------------------|-----------|---------|----------------------------------------------------------------------------------------------|
-| `speed`             | `number`  | `100`   | Scroll speed in px/s.                                                                        |
-| `pauseOnMouseEnter` | `boolean` | `true`  | Pauses the animation when the mouse hovers over it.                                          |
-| `injectStyles`      | `boolean` | `true`  | Automatically injects the minimal required CSS styles so the animation works out of the box. |
+| Option              | Type      | Default | Description                                                                                                                                                                                     |
+|---------------------|-----------|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `speed`             | `number`  | `100`   | Scroll speed in px/s.                                                                                                                                                                           |
+| `pauseOnMouseEnter` | `boolean` | `true`  | Pauses the animation when the mouse hovers over it.                                                                                                                                             |
+| `injectStyles`      | `boolean` | `true`  | Automatically injects the minimal required CSS styles so the animation works out of the box. Alternatively, you'll need to provide your own styling, allowing for complete control over the UI. |
 
 
 ### Methods
