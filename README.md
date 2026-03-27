@@ -1,19 +1,19 @@
 # CFInfiniteScroll 🚀
 
-Un'estensione leggera (zero dipendenze) per creare scorrimenti infiniti fluidi (marquee) nel browser.
+A lightweight (zero dependencies) library to create smooth infinite scrolling (marquee) effects in the browser.
 
-## Installazione
+## Installation
 
 ```bash
 npm install cf-infinite-scroll
 ```
 
-Utilizzo
-HTML
-La struttura richiede un contenitore e un elemento interno con classe .track.
+## Usage
+
+### HTML
+The structure requires a container and an inner element with the class `.track`.
 
 ```html
-
 <div id="my-scroller">
     <div class="track">
         <img src="logo1.png" alt="">
@@ -23,33 +23,33 @@ La struttura richiede un contenitore e un elemento interno con classe .track.
 </div>
 ```
 
-JavaScript
-L'iniezione dei CSS necessari avviene automaticamente.
+### JavaScript
+The required CSS is injected automatically.
 
-```Javascript
+```javascript
 import CFInfiniteScroll from 'cf-infinite-scroll';
 
 const scroller = new CFInfiniteScroll('#my-scroller', {
-    speed: 100 // pixel al secondo
+    speed: 100 // pixels per second
 });
 
 scroller.init();
 
-// Per fermare e ripulire:
+// To stop and clean up:
 // scroller.destroy();
 ```
 
 ## API
 
-| Opzione | Tipo     | Default | Descrizione                      |
+| Option  | Type     | Default | Description                      |
 |---------|----------|---------|----------------------------------|
-| `speed` | `number` | `100`   | Velocità di scorrimento in px/s. |
+| `speed` | `number` | `100`   | Scroll speed in px/s.            |
 
-### Metodi
+### Methods
 
-- `init()`: Avvia lo scroller e genera i cloni necessari.
-- `destroy()`: Rimuove i cloni e ferma l'animazione.
+- `init()`: Starts the scroller and generates the necessary clones.
+- `destroy()`: Removes the clones and stops the animation.
 
-## Licenza
+## License
 
 MIT
