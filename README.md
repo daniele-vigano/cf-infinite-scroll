@@ -1,6 +1,6 @@
 # CFInfiniteScroll 🚀
 
-A vanilla lightweight (zero dependencies) library to create smooth infinite scrolling (marquee) effects in the browser.
+A vanilla JS lightweight (zero dependencies) library to create smooth infinite scrolling (marquee) effects in the browser.
 
 ## Demo
 You can see the library in action here: [daniele-vigano.github.io/cf-infinite-scroll](https://daniele-vigano.github.io/cf-infinite-scroll/)
