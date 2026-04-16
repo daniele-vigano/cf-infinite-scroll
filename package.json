@@ -1,6 +1,6 @@
 {
   "name": "cf-infinite-scroll",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "files": [
     "dist"
   ],
@@ -33,5 +33,9 @@
   "devDependencies": {
     "gh-pages": "^6.3.0",
     "microbundle": "^0.15.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniele-vigano/cf-infinite-scroll"
   }
 }
